@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses | EduLearn</title>
+</head>
+<body>
+     <!-- Bootstrap 5 CSS -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+     <!-- Font Awesome -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <!-- Custom CSS -->
+     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Courses Header -->
+    <section class="courses-header py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1>All Courses</h1>
+                    <p class="lead">Browse our collection of top-rated courses taught by industry experts.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Search courses..." id="courseSearch">
+                        <button class="btn btn-light" type="button" id="searchButton">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Filter -->
+    <section class="courses-filter py-3 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <select class="form-select" id="categoryFilter">
+                        <option value="">All Categories</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Data Science">Data Science</option>
+                        <option value="Mobile Development">Mobile Development</option>
+                        <option value="Business">Business</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-select" id="levelFilter">
+                        <option value="">All Levels</option>
+                        <option value="Beginner">Beginner</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Advanced">Advanced</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-select" id="priceFilter">
+                        <option value="">All Prices</option>
+                        <option value="free">Free</option>
+                        <option value="paid">Paid</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-outline-secondary w-100" id="resetFilters">Reset Filters</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses List -->
+    <section class="courses-list py-5">
+        <div class="container">
+            <div class="row" id="allCoursesContainer">
+                <!-- All courses will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About EduLearn</h5>
+                    <p>EduLearn is a leading online learning platform that offers anyone, anywhere access to online courses and degrees from world-class universities and companies.</p>
+                </div>
+                <div class="col-md-2">
+                    <h5>Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Home</a></li>
+                        <li><a href="#" class="text-white">Courses</a></li>
+                        <li><a href="#" class="text-white">About</a></li>
+                        <li><a href="#" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contact Us</h5>
+                    <p><i class="fas fa-envelope me-2"></i> info@edulearn.com</p>
+                    <p><i class="fas fa-phone me-2"></i> +1 (555) 123-4567</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Follow Us</h5>
+                    <a href="#" class="text-white me-2"><i class="fab fa-facebook-f fa-lg"></i></a>
+                    <a href="#" class="text-white me-2"><i class="fab fa-twitter fa-lg"></i></a>
+                    <a href="#" class="text-white me-2"><i class="fab fa-instagram fa-lg"></i></a>
+                    <a href="#" class="text-white me-2"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p>&copy; 2023 EduLearn. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAllCourses();
+            
+            // Setup event listeners for filters
+            document.getElementById('categoryFilter').addEventListener('change', filterCourses);
+            document.getElementById('levelFilter').addEventListener('change', filterCourses);
+            document.getElementById('priceFilter').addEventListener('change', filterCourses);
+            document.getElementById('resetFilters').addEventListener('click', resetFilters);
+            document.getElementById('searchButton').addEventListener('click', searchCourses);
+            document.getElementById('courseSearch').addEventListener('keyup', function(e) {
+                if (e.key === 'Enter') {
+                    searchCourses();
+                }
+            });
+        });
+
+        function loadAllCourses() {
+            const container = document.getElementById('allCoursesContainer');
+            
+            courses.forEach(course => {
+                const courseCard = document.createElement('div');
+                courseCard.className = 'col-md-4 mb-4';
+                courseCard.innerHTML = `
+                    <div class="card course-card h-100">
+                        <img src="${course.image}" class="card-img-top" alt="${course.title}">
+                        <div class="card-body">
+                            <h5 class="card-title">${course.title}</h5>
+                            <p class="instructor">${course.instructor}</p>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="rating"><i class="fas fa-star text-warning"></i> ${course.rating}</span>
+                                <span class="students"><i class="fas fa-user-graduate"></i> ${course.students}</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price">$${course.price}</span>
+                                <a href="course-detail.html?id=${course.id}" class="btn btn-sm btn-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(courseCard);
+            });
+        }
+
+        function filterCourses() {
+            const category = document.getElementById('categoryFilter').value;
+            const level = document.getElementById('levelFilter').value;
+            const price = document.getElementById('priceFilter').value;
+            
+            // In a real app, you would filter the courses based on these criteria
+            console.log(`Filtering by: Category=${category}, Level=${level}, Price=${price}`);
+            // For now, we'll just show all courses
+        }
+
+        function resetFilters() {
+            document.getElementById('categoryFilter').value = '';
+            document.getElementById('levelFilter').value = '';
+            document.getElementById('priceFilter').value = '';
+            filterCourses();
+        }
+
+        function searchCourses() {
+            const searchTerm = document.getElementById('courseSearch').value.toLowerCase();
+            
+            // In a real app, you would search the courses based on the term
+            console.log(`Searching for: ${searchTerm}`);
+            // For now, we'll just show all courses
+        }
+    </script>
+</body>
+</html>

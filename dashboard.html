@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | EduLearn</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .sidebar {
+            height: 100vh;
+            position: fixed;
+            background-color: #4e73df;
+            background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%);
+            width: 14rem;
+            color: white;
+        }
+        
+        .sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .sidebar .nav-link:hover {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .sidebar .nav-link.active {
+            color: white;
+            font-weight: 700;
+        }
+        
+        .sidebar .nav-link i {
+            margin-right: 0.5rem;
+        }
+        
+        .main-content {
+            margin-left: 14rem;
+            padding: 20px;
+        }
+        
+        .card {
+            border: none;
+            border-radius: 0.35rem;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+        }
+        
+        .progress {
+            height: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="text-center py-4">
+            <h4>EduLearn</h4>
+        </div>
+        <hr class="my-0">
+        <div class="px-3 py-4">
+            <div class="text-center mb-4">
+                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60" width="60" height="60">
+                <div class="mt-2">
+                    <h6 class="mb-0">John Doe</h6>
+                    <small>Student</small>
+                </div>
+            </div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-fw fa-book"></i>
+                        <span>My Courses</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-fw fa-certificate"></i>
+                        <span>Certificates</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-fw fa-heart"></i>
+                        <span>Wishlist</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-fw fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1 class="mb-4">Dashboard</h1>
+        
+        <!-- Stats Cards -->
+        <div class="row mb-4">
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    Enrolled Courses</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-book fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                    Completed Courses</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">2</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-check-circle fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-info shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                    Learning Hours</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">42</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-clock fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-warning shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                    Certificates</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">2</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-certificate fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Current Courses -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">Courses in Progress</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Course</th>
+                                <th>Progress</th>
+                                <th>Last Accessed</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>The Complete JavaScript Course 2023</td>
+                                <td>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 65%"></div>
+                                    </div>
+                                    <small>65% complete</small>
+                                </td>
+                                <td>2 days ago</td>
+                                <td><a href="#" class="btn btn-sm btn-primary">Continue</a></td>
+                            </tr>
+                            <tr>
+                                <td>Python for Data Science</td>
+                                <td>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 30%"></div>
+                                    </div>
+                                    <small>30% complete</small>
+                                </td>
+                                <td>1 week ago</td>
+                                <td><a href="#" class="btn btn-sm btn-primary">Continue</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Recommended Courses -->
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Recommended For You</h5>
+            </div>
+            <div class="card-body">
+                <div class="row" id="recommendedCourses">
+                    <!-- Recommended courses will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+    
+    <!-- Dashboard specific JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load recommended courses
+            const recommendedContainer = document.getElementById('recommendedCourses');
+            
+            // Filter some courses as recommended (just for demo)
+            const recommendedCourses = courses.filter(course => course.id !== 1 && course.id !== 2);
+            
+            recommendedCourses.forEach(course => {
+                const courseCard = document.createElement('div');
+                courseCard.className = 'col-md-4 mb-4';
+                courseCard.innerHTML = `
+                    <div class="card course-card h-100">
+                        <img src="${course.image}" class="card-img-top" alt="${course.title}">
+                        <div class="card-body">
+                            <h5 class="card-title">${course.title}</h5>
+                            <p class="instructor">${course.instructor}</p>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="rating"><i class="fas fa-star text-warning"></i> ${course.rating}</span>
+                                <span class="students"><i class="fas fa-user-graduate"></i> ${course.students}</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price">$${course.price}</span>
+                                <a href="course-detail.html?id=${course.id}" class="btn btn-sm btn-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                recommendedContainer.appendChild(courseCard);
+            });
+        });
+    </script>
+</body>
+</html>
